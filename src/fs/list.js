@@ -2,7 +2,13 @@ import fs from "fs";
 
 const list = async () => {
   const path = './files'
-  const result = await fs.promises.readdir(path)
+  let result;
+
+  try {
+    result = await fs.promises.readdir(path)
+  } catch (e) {
+    throw new Error('FS operation failed')
+  }
 
   console.log(result.join('; '))
 };
