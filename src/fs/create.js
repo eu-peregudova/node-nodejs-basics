@@ -10,7 +10,7 @@ const create = async () => {
   let fileExists = false
 
   try {
-    await fs.promises.stat(filePath);
+    await fs.promises.access(filePath);
     fileExists = true
   } catch (error) {
     await fs.promises.writeFile(filePath, fileContent);
